@@ -9,6 +9,7 @@ using std::atomic;
 class Sequence {
     public:
         atomic<long> value;
+        Sequence();
         Sequence(long value);
         long get();
         void set(long value);

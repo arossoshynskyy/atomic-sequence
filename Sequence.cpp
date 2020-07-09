@@ -1,6 +1,8 @@
 #include "Sequence.h"
 
 
+Sequence::Sequence() {}
+
 Sequence::Sequence(long value) {
     this->value = value;
 }

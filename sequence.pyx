@@ -1,19 +1,18 @@
-cimport Sequence
+from Sequence cimport Sequence
 
 
-cdef class Sequence:
+cdef class AtomicSequence:
     """ Used to track sequences and perform atomic operations """
-    cdef Sequence value
+    cdef Sequence* value
 
-    def __cinit__(self):
-        self.value = Sequence(-1)
+    def __cinit__(self, value):
+        self.value = new Sequence(value)
 
-    cdef get(self):
-        return self.value.load()
+    def get(self):
+        return self.value.get()
 
-    cdef set(self, long value):
-        self.value.exchange(value)
+    def set(self, long value):
+        self.value.set(value)
 
-    cdef increment_and_get(self, long value):
-        self.value.fetch_add(value)
-        return self.value.load()
+    def increment_and_get(self, long value):
+        return self.value.increment_and_get(value)
