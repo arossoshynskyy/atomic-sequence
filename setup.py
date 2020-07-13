@@ -1,11 +1,15 @@
 from setuptools import Extension, setup
 from Cython.Build import cythonize
 
-ext_modules = cythonize([Extension("sequence", sources=["sequence.pyx", "Sequence.cpp"], language="c++")], annotate=True)
+sources = ["sequence/sequence.pyx", "sequence/Sequence.cpp"]
+
+ext_modules = cythonize(
+    [Extension("sequence", sources=sources, language="c++")], annotate=True
+)
 
 setup(
     author="Andriy Rossoshynskyy",
     description="Lock-free, thread-safe sequence.",
     ext_modules=ext_modules,
-    name='atomic-sequence',
+    name="atomic-sequence",
 )

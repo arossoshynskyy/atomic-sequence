@@ -14,6 +14,7 @@ class Sequence {
         long get();
         void set(long value);
         long increment_and_get(long value);
+        long get_and_increment(long value);
 };
 
 

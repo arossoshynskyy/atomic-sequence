@@ -4,8 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+Cython = "*"
 
 [dev-packages]
+flake8 = "*"
+black = "==19.10b0"
+pytest = "*"
+tox = "*"
 
 [requires]
 python_version = "3.8"
