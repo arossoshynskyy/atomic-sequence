@@ -23,3 +23,6 @@ cdef class AtomicSequence:
         """ Increment the current value of the sequence by a given amount
         and return the value directly preceding the operation """
         return self.value_get_and_increment(value)
+
+    def __dealloc__(self):
+        del self.value
