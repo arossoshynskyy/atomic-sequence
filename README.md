@@ -1,7 +1,6 @@
 # Atomic Sequence
 
-A lock-free sequence which uses the C++ atomic library under the hood. This gives
-a ~3.5x speed increase over using python locks 
+A lock-free, thread-safe sequence/counter which uses the C++ atomic library under the hood. This gives a ~5-10x speed up compared to threading locks.
 
 ## Install
 ```
