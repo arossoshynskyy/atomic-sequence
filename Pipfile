@@ -8,11 +8,10 @@ Cython = "*"
 assertpy = "*"
 
 [dev-packages]
-flake8 = "*"
 black = "==19.10b0"
 tox = "*"
-pytest-cython = "*"
 pytest = "*"
+pytest-benchmark = "*"
 
 [requires]
 python_version = "3.8"

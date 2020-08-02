@@ -16,10 +16,13 @@ sequence = Sequence(0)
 
 # set current sequence value to 1
 sequence.set(1)
+
 # get current value
 value = sequence.get()
+
 # increment the sequence value and get the new value
 value = sequence.increment_and_get(1)
+
 # increment the sequence value and get the value directly preceding the operation
 value = sequence.get_and_increment(1)
 ```
@@ -28,5 +31,6 @@ value = sequence.get_and_increment(1)
 To run unittests and benchmarks use tox:
 
 ```
+pipenv install --dev
 pipenv run tox
 ```
