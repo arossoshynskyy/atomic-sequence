@@ -5,7 +5,7 @@ a ~3.5x speed increase over using python locks
 
 ## Install
 ```
-pip install atomic-queue
+pip install atomic-sequence
 ```
 
 ## Usage
