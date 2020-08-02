@@ -1,12 +1,12 @@
-from sequence.sequence cimport Sequence
+from sequence.sequence cimport Sequence as CppSequence
 
 
-cdef class AtomicSequence:
+cdef class Sequence:
     """ Used to track sequences and perform atomic operations """
-    cdef Sequence* value
+    cdef CppSequence* value
 
     def __cinit__(self, value):
-        self.value = new Sequence(value)
+        self.value = new CppSequence(value)
 
     def get(self):
         return self.value.get()
