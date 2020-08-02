@@ -5,12 +5,14 @@ name = "pypi"
 
 [packages]
 Cython = "*"
+assertpy = "*"
 
 [dev-packages]
 flake8 = "*"
 black = "==19.10b0"
-pytest = "*"
 tox = "*"
+pytest-cython = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.8"

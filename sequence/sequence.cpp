@@ -4,19 +4,20 @@
 {
     "distutils": {
         "depends": [
-            "sequence/Sequence.h"
+            "sequence/src/Sequence.cpp",
+            "sequence/src/Sequence.h"
         ],
         "include_dirs": [
+            "sequence",
             "./sequence"
         ],
         "language": "c++",
-        "name": "sequence",
+        "name": "atomic",
         "sources": [
-            "sequence/sequence.pyx",
-            "sequence/Sequence.cpp"
+            "sequence/sequence.pyx"
         ]
     },
-    "module_name": "sequence"
+    "module_name": "atomic"
 }
 END: Cython Metadata */
 
@@ -636,14 +637,15 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__sequence
-#define __PYX_HAVE_API__sequence
+#define __PYX_HAVE__atomic
+#define __PYX_HAVE_API__atomic
 /* Early includes */
+#include "src/Sequence.cpp"
 #include "ios"
 #include "new"
 #include "stdexcept"
 #include "typeinfo"
-#include "Sequence.h"
+#include "src/Sequence.h"
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -857,16 +859,16 @@ static const char *__pyx_f[] = {
 };
 
 /*--- Type declarations ---*/
-struct __pyx_obj_8sequence_AtomicSequence;
+struct __pyx_obj_6atomic_AtomicSequence;
 
-/* "sequence.pyx":4
+/* "sequence/sequence.pyx":4
  * 
  * 
  * cdef class AtomicSequence:             # <<<<<<<<<<<<<<
  *     """ Used to track sequences and perform atomic operations """
  *     cdef Sequence* value
  */
-struct __pyx_obj_8sequence_AtomicSequence {
+struct __pyx_obj_6atomic_AtomicSequence {
   PyObject_HEAD
   Sequence *value;
 };
@@ -958,53 +960,12 @@ static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
 static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
     Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
 
-/* PyCFunctionFastCall.proto */
-#if CYTHON_FAST_PYCCALL
-static CYTHON_INLINE PyObject *__Pyx_PyCFunction_FastCall(PyObject *func, PyObject **args, Py_ssize_t nargs);
-#else
-#define __Pyx_PyCFunction_FastCall(func, args, nargs)  (assert(0), NULL)
-#endif
-
-/* PyFunctionFastCall.proto */
-#if CYTHON_FAST_PYCALL
-#define __Pyx_PyFunction_FastCall(func, args, nargs)\
-    __Pyx_PyFunction_FastCallDict((func), (args), (nargs), NULL)
-#if 1 || PY_VERSION_HEX < 0x030600B1
-static PyObject *__Pyx_PyFunction_FastCallDict(PyObject *func, PyObject **args, Py_ssize_t nargs, PyObject *kwargs);
-#else
-#define __Pyx_PyFunction_FastCallDict(func, args, nargs, kwargs) _PyFunction_FastCallDict(func, args, nargs, kwargs)
-#endif
-#define __Pyx_BUILD_ASSERT_EXPR(cond)\
-    (sizeof(char [1 - 2*!(cond)]) - 1)
-#ifndef Py_MEMBER_SIZE
-#define Py_MEMBER_SIZE(type, member) sizeof(((type *)0)->member)
-#endif
-  static size_t __pyx_pyframe_localsplus_offset = 0;
-  #include "frameobject.h"
-  #define __Pxy_PyFrame_Initialize_Offsets()\
-    ((void)__Pyx_BUILD_ASSERT_EXPR(sizeof(PyFrameObject) == offsetof(PyFrameObject, f_localsplus) + Py_MEMBER_SIZE(PyFrameObject, f_localsplus)),\
-     (void)(__pyx_pyframe_localsplus_offset = ((size_t)PyFrame_Type.tp_basicsize) - Py_MEMBER_SIZE(PyFrameObject, f_localsplus)))
-  #define __Pyx_PyFrame_GetLocalsplus(frame)\
-    (assert(__pyx_pyframe_localsplus_offset), (PyObject **)(((char *)(frame)) + __pyx_pyframe_localsplus_offset))
-#endif
-
 /* PyObjectCall.proto */
 #if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw);
 #else
 #define __Pyx_PyObject_Call(func, arg, kw) PyObject_Call(func, arg, kw)
 #endif
-
-/* PyObjectCall2Args.proto */
-static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2);
-
-/* PyObjectCallMethO.proto */
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg);
-#endif
-
-/* PyObjectCallOneArg.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg);
 
 /* PyThreadStateGet.proto */
 #if CYTHON_FAST_THREAD_STATE
@@ -1196,15 +1157,15 @@ static int __Pyx_check_binary_version(void);
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
-/* Module declarations from 'sequence.Sequence' */
+/* Module declarations from 'sequence.sequence' */
 
-/* Module declarations from 'sequence' */
-static PyTypeObject *__pyx_ptype_8sequence_AtomicSequence = 0;
-#define __Pyx_MODULE_NAME "sequence"
-extern int __pyx_module_is_main_sequence;
-int __pyx_module_is_main_sequence = 0;
+/* Module declarations from 'atomic' */
+static PyTypeObject *__pyx_ptype_6atomic_AtomicSequence = 0;
+#define __Pyx_MODULE_NAME "atomic"
+extern int __pyx_module_is_main_atomic;
+int __pyx_module_is_main_atomic = 0;
 
-/* Implementation of 'sequence' */
+/* Implementation of 'atomic' */
 static PyObject *__pyx_builtin_TypeError;
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
@@ -1219,7 +1180,6 @@ static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_AtomicSequence[] = "AtomicSequence";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static const char __pyx_k_value_get_and_increment[] = "value_get_and_increment";
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
 static PyObject *__pyx_n_s_AtomicSequence;
 static PyObject *__pyx_n_s_TypeError;
@@ -1235,20 +1195,20 @@ static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_value;
-static PyObject *__pyx_n_s_value_get_and_increment;
-static int __pyx_pf_8sequence_14AtomicSequence___cinit__(struct __pyx_obj_8sequence_AtomicSequence *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_8sequence_14AtomicSequence_2get(struct __pyx_obj_8sequence_AtomicSequence *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8sequence_14AtomicSequence_4set(struct __pyx_obj_8sequence_AtomicSequence *__pyx_v_self, long __pyx_v_value); /* proto */
-static PyObject *__pyx_pf_8sequence_14AtomicSequence_6increment_and_get(struct __pyx_obj_8sequence_AtomicSequence *__pyx_v_self, long __pyx_v_value); /* proto */
-static PyObject *__pyx_pf_8sequence_14AtomicSequence_8get_and_increment(struct __pyx_obj_8sequence_AtomicSequence *__pyx_v_self, long __pyx_v_value); /* proto */
-static PyObject *__pyx_pf_8sequence_14AtomicSequence_10__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_8sequence_AtomicSequence *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_8sequence_14AtomicSequence_12__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_8sequence_AtomicSequence *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_tp_new_8sequence_AtomicSequence(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static int __pyx_pf_6atomic_14AtomicSequence___cinit__(struct __pyx_obj_6atomic_AtomicSequence *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6atomic_14AtomicSequence_2get(struct __pyx_obj_6atomic_AtomicSequence *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6atomic_14AtomicSequence_4set(struct __pyx_obj_6atomic_AtomicSequence *__pyx_v_self, long __pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6atomic_14AtomicSequence_6increment_and_get(struct __pyx_obj_6atomic_AtomicSequence *__pyx_v_self, long __pyx_v_value); /* proto */
+static PyObject *__pyx_pf_6atomic_14AtomicSequence_8get_and_increment(struct __pyx_obj_6atomic_AtomicSequence *__pyx_v_self, long __pyx_v_value); /* proto */
+static void __pyx_pf_6atomic_14AtomicSequence_10__dealloc__(struct __pyx_obj_6atomic_AtomicSequence *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6atomic_14AtomicSequence_12__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6atomic_AtomicSequence *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6atomic_14AtomicSequence_14__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6atomic_AtomicSequence *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_tp_new_6atomic_AtomicSequence(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
 /* Late includes */
 
-/* "sequence.pyx":8
+/* "sequence/sequence.pyx":8
  *     cdef Sequence* value
  * 
  *     def __cinit__(self, value):             # <<<<<<<<<<<<<<
@@ -1257,8 +1217,8 @@ static PyObject *__pyx_tuple__2;
  */
 
 /* Python wrapper */
-static int __pyx_pw_8sequence_14AtomicSequence_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_8sequence_14AtomicSequence_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_6atomic_14AtomicSequence_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_6atomic_14AtomicSequence_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_value = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -1298,18 +1258,18 @@ static int __pyx_pw_8sequence_14AtomicSequence_1__cinit__(PyObject *__pyx_v_self
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 8, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("sequence.AtomicSequence.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("atomic.AtomicSequence.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8sequence_14AtomicSequence___cinit__(((struct __pyx_obj_8sequence_AtomicSequence *)__pyx_v_self), __pyx_v_value);
+  __pyx_r = __pyx_pf_6atomic_14AtomicSequence___cinit__(((struct __pyx_obj_6atomic_AtomicSequence *)__pyx_v_self), __pyx_v_value);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_8sequence_14AtomicSequence___cinit__(struct __pyx_obj_8sequence_AtomicSequence *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_6atomic_14AtomicSequence___cinit__(struct __pyx_obj_6atomic_AtomicSequence *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   long __pyx_t_1;
@@ -1319,7 +1279,7 @@ static int __pyx_pf_8sequence_14AtomicSequence___cinit__(struct __pyx_obj_8seque
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "sequence.pyx":9
+  /* "sequence/sequence.pyx":9
  * 
  *     def __cinit__(self, value):
  *         self.value = new Sequence(value)             # <<<<<<<<<<<<<<
@@ -1335,7 +1295,7 @@ static int __pyx_pf_8sequence_14AtomicSequence___cinit__(struct __pyx_obj_8seque
   }
   __pyx_v_self->value = __pyx_t_2;
 
-  /* "sequence.pyx":8
+  /* "sequence/sequence.pyx":8
  *     cdef Sequence* value
  * 
  *     def __cinit__(self, value):             # <<<<<<<<<<<<<<
@@ -1347,14 +1307,14 @@ static int __pyx_pf_8sequence_14AtomicSequence___cinit__(struct __pyx_obj_8seque
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("sequence.AtomicSequence.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("atomic.AtomicSequence.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "sequence.pyx":11
+/* "sequence/sequence.pyx":11
  *         self.value = new Sequence(value)
  * 
  *     def get(self):             # <<<<<<<<<<<<<<
@@ -1363,19 +1323,20 @@ static int __pyx_pf_8sequence_14AtomicSequence___cinit__(struct __pyx_obj_8seque
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8sequence_14AtomicSequence_3get(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_8sequence_14AtomicSequence_3get(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6atomic_14AtomicSequence_3get(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6atomic_14AtomicSequence_2get[] = "AtomicSequence.get(self)";
+static PyObject *__pyx_pw_6atomic_14AtomicSequence_3get(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get (wrapper)", 0);
-  __pyx_r = __pyx_pf_8sequence_14AtomicSequence_2get(((struct __pyx_obj_8sequence_AtomicSequence *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6atomic_14AtomicSequence_2get(((struct __pyx_obj_6atomic_AtomicSequence *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8sequence_14AtomicSequence_2get(struct __pyx_obj_8sequence_AtomicSequence *__pyx_v_self) {
+static PyObject *__pyx_pf_6atomic_14AtomicSequence_2get(struct __pyx_obj_6atomic_AtomicSequence *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1384,7 +1345,7 @@ static PyObject *__pyx_pf_8sequence_14AtomicSequence_2get(struct __pyx_obj_8sequ
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get", 0);
 
-  /* "sequence.pyx":12
+  /* "sequence/sequence.pyx":12
  * 
  *     def get(self):
  *         return self.value.get()             # <<<<<<<<<<<<<<
@@ -1398,7 +1359,7 @@ static PyObject *__pyx_pf_8sequence_14AtomicSequence_2get(struct __pyx_obj_8sequ
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "sequence.pyx":11
+  /* "sequence/sequence.pyx":11
  *         self.value = new Sequence(value)
  * 
  *     def get(self):             # <<<<<<<<<<<<<<
@@ -1409,7 +1370,7 @@ static PyObject *__pyx_pf_8sequence_14AtomicSequence_2get(struct __pyx_obj_8sequ
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("sequence.AtomicSequence.get", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("atomic.AtomicSequence.get", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -1417,7 +1378,7 @@ static PyObject *__pyx_pf_8sequence_14AtomicSequence_2get(struct __pyx_obj_8sequ
   return __pyx_r;
 }
 
-/* "sequence.pyx":14
+/* "sequence/sequence.pyx":14
  *         return self.value.get()
  * 
  *     def set(self, long value):             # <<<<<<<<<<<<<<
@@ -1426,8 +1387,9 @@ static PyObject *__pyx_pf_8sequence_14AtomicSequence_2get(struct __pyx_obj_8sequ
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8sequence_14AtomicSequence_5set(PyObject *__pyx_v_self, PyObject *__pyx_arg_value); /*proto*/
-static PyObject *__pyx_pw_8sequence_14AtomicSequence_5set(PyObject *__pyx_v_self, PyObject *__pyx_arg_value) {
+static PyObject *__pyx_pw_6atomic_14AtomicSequence_5set(PyObject *__pyx_v_self, PyObject *__pyx_arg_value); /*proto*/
+static char __pyx_doc_6atomic_14AtomicSequence_4set[] = "AtomicSequence.set(self, long value)";
+static PyObject *__pyx_pw_6atomic_14AtomicSequence_5set(PyObject *__pyx_v_self, PyObject *__pyx_arg_value) {
   long __pyx_v_value;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -1440,23 +1402,23 @@ static PyObject *__pyx_pw_8sequence_14AtomicSequence_5set(PyObject *__pyx_v_self
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  __Pyx_AddTraceback("sequence.AtomicSequence.set", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("atomic.AtomicSequence.set", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8sequence_14AtomicSequence_4set(((struct __pyx_obj_8sequence_AtomicSequence *)__pyx_v_self), ((long)__pyx_v_value));
+  __pyx_r = __pyx_pf_6atomic_14AtomicSequence_4set(((struct __pyx_obj_6atomic_AtomicSequence *)__pyx_v_self), ((long)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8sequence_14AtomicSequence_4set(struct __pyx_obj_8sequence_AtomicSequence *__pyx_v_self, long __pyx_v_value) {
+static PyObject *__pyx_pf_6atomic_14AtomicSequence_4set(struct __pyx_obj_6atomic_AtomicSequence *__pyx_v_self, long __pyx_v_value) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set", 0);
 
-  /* "sequence.pyx":15
+  /* "sequence/sequence.pyx":15
  * 
  *     def set(self, long value):
  *         self.value.set(value)             # <<<<<<<<<<<<<<
@@ -1465,7 +1427,7 @@ static PyObject *__pyx_pf_8sequence_14AtomicSequence_4set(struct __pyx_obj_8sequ
  */
   __pyx_v_self->value->set(__pyx_v_value);
 
-  /* "sequence.pyx":14
+  /* "sequence/sequence.pyx":14
  *         return self.value.get()
  * 
  *     def set(self, long value):             # <<<<<<<<<<<<<<
@@ -1480,7 +1442,7 @@ static PyObject *__pyx_pf_8sequence_14AtomicSequence_4set(struct __pyx_obj_8sequ
   return __pyx_r;
 }
 
-/* "sequence.pyx":17
+/* "sequence/sequence.pyx":17
  *         self.value.set(value)
  * 
  *     def increment_and_get(self, long value):             # <<<<<<<<<<<<<<
@@ -1489,9 +1451,9 @@ static PyObject *__pyx_pf_8sequence_14AtomicSequence_4set(struct __pyx_obj_8sequ
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8sequence_14AtomicSequence_7increment_and_get(PyObject *__pyx_v_self, PyObject *__pyx_arg_value); /*proto*/
-static char __pyx_doc_8sequence_14AtomicSequence_6increment_and_get[] = " Increment the current value of the sequence by a given amount\n        and return the new value ";
-static PyObject *__pyx_pw_8sequence_14AtomicSequence_7increment_and_get(PyObject *__pyx_v_self, PyObject *__pyx_arg_value) {
+static PyObject *__pyx_pw_6atomic_14AtomicSequence_7increment_and_get(PyObject *__pyx_v_self, PyObject *__pyx_arg_value); /*proto*/
+static char __pyx_doc_6atomic_14AtomicSequence_6increment_and_get[] = "AtomicSequence.increment_and_get(self, long value)\n Increment the current value of the sequence by a given amount\n        and return the new value ";
+static PyObject *__pyx_pw_6atomic_14AtomicSequence_7increment_and_get(PyObject *__pyx_v_self, PyObject *__pyx_arg_value) {
   long __pyx_v_value;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -1504,18 +1466,18 @@ static PyObject *__pyx_pw_8sequence_14AtomicSequence_7increment_and_get(PyObject
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  __Pyx_AddTraceback("sequence.AtomicSequence.increment_and_get", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("atomic.AtomicSequence.increment_and_get", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8sequence_14AtomicSequence_6increment_and_get(((struct __pyx_obj_8sequence_AtomicSequence *)__pyx_v_self), ((long)__pyx_v_value));
+  __pyx_r = __pyx_pf_6atomic_14AtomicSequence_6increment_and_get(((struct __pyx_obj_6atomic_AtomicSequence *)__pyx_v_self), ((long)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8sequence_14AtomicSequence_6increment_and_get(struct __pyx_obj_8sequence_AtomicSequence *__pyx_v_self, long __pyx_v_value) {
+static PyObject *__pyx_pf_6atomic_14AtomicSequence_6increment_and_get(struct __pyx_obj_6atomic_AtomicSequence *__pyx_v_self, long __pyx_v_value) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1524,7 +1486,7 @@ static PyObject *__pyx_pf_8sequence_14AtomicSequence_6increment_and_get(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("increment_and_get", 0);
 
-  /* "sequence.pyx":20
+  /* "sequence/sequence.pyx":20
  *         """ Increment the current value of the sequence by a given amount
  *         and return the new value """
  *         return self.value.increment_and_get(value)             # <<<<<<<<<<<<<<
@@ -1538,7 +1500,7 @@ static PyObject *__pyx_pf_8sequence_14AtomicSequence_6increment_and_get(struct _
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "sequence.pyx":17
+  /* "sequence/sequence.pyx":17
  *         self.value.set(value)
  * 
  *     def increment_and_get(self, long value):             # <<<<<<<<<<<<<<
@@ -1549,7 +1511,7 @@ static PyObject *__pyx_pf_8sequence_14AtomicSequence_6increment_and_get(struct _
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("sequence.AtomicSequence.increment_and_get", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("atomic.AtomicSequence.increment_and_get", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -1557,7 +1519,7 @@ static PyObject *__pyx_pf_8sequence_14AtomicSequence_6increment_and_get(struct _
   return __pyx_r;
 }
 
-/* "sequence.pyx":22
+/* "sequence/sequence.pyx":22
  *         return self.value.increment_and_get(value)
  * 
  *     def get_and_increment(self, long value):             # <<<<<<<<<<<<<<
@@ -1566,9 +1528,9 @@ static PyObject *__pyx_pf_8sequence_14AtomicSequence_6increment_and_get(struct _
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8sequence_14AtomicSequence_9get_and_increment(PyObject *__pyx_v_self, PyObject *__pyx_arg_value); /*proto*/
-static char __pyx_doc_8sequence_14AtomicSequence_8get_and_increment[] = " Increment the current value of the sequence by a given amount\n        and return the value directly preceding the operation ";
-static PyObject *__pyx_pw_8sequence_14AtomicSequence_9get_and_increment(PyObject *__pyx_v_self, PyObject *__pyx_arg_value) {
+static PyObject *__pyx_pw_6atomic_14AtomicSequence_9get_and_increment(PyObject *__pyx_v_self, PyObject *__pyx_arg_value); /*proto*/
+static char __pyx_doc_6atomic_14AtomicSequence_8get_and_increment[] = "AtomicSequence.get_and_increment(self, long value)\n Increment the current value of the sequence by a given amount\n        and return the value directly preceding the operation ";
+static PyObject *__pyx_pw_6atomic_14AtomicSequence_9get_and_increment(PyObject *__pyx_v_self, PyObject *__pyx_arg_value) {
   long __pyx_v_value;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -1581,60 +1543,41 @@ static PyObject *__pyx_pw_8sequence_14AtomicSequence_9get_and_increment(PyObject
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
-  __Pyx_AddTraceback("sequence.AtomicSequence.get_and_increment", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("atomic.AtomicSequence.get_and_increment", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8sequence_14AtomicSequence_8get_and_increment(((struct __pyx_obj_8sequence_AtomicSequence *)__pyx_v_self), ((long)__pyx_v_value));
+  __pyx_r = __pyx_pf_6atomic_14AtomicSequence_8get_and_increment(((struct __pyx_obj_6atomic_AtomicSequence *)__pyx_v_self), ((long)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8sequence_14AtomicSequence_8get_and_increment(struct __pyx_obj_8sequence_AtomicSequence *__pyx_v_self, long __pyx_v_value) {
+static PyObject *__pyx_pf_6atomic_14AtomicSequence_8get_and_increment(struct __pyx_obj_6atomic_AtomicSequence *__pyx_v_self, long __pyx_v_value) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_and_increment", 0);
 
-  /* "sequence.pyx":25
+  /* "sequence/sequence.pyx":25
  *         """ Increment the current value of the sequence by a given amount
  *         and return the value directly preceding the operation """
- *         return self.value_get_and_increment(value)             # <<<<<<<<<<<<<<
+ *         return self.value.get_and_increment(value)             # <<<<<<<<<<<<<<
+ * 
+ *     def __dealloc__(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_value_get_and_increment); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 25, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_v_value); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 25, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_4)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_4);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-    }
-  }
-  __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 25, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_self->value->get_and_increment(__pyx_v_value)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "sequence.pyx":22
+  /* "sequence/sequence.pyx":22
  *         return self.value.increment_and_get(value)
  * 
  *     def get_and_increment(self, long value):             # <<<<<<<<<<<<<<
@@ -1645,15 +1588,52 @@ static PyObject *__pyx_pf_8sequence_14AtomicSequence_8get_and_increment(struct _
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("sequence.AtomicSequence.get_and_increment", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("atomic.AtomicSequence.get_and_increment", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
+}
+
+/* "sequence/sequence.pyx":27
+ *         return self.value.get_and_increment(value)
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         del self.value
+ */
+
+/* Python wrapper */
+static void __pyx_pw_6atomic_14AtomicSequence_11__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_6atomic_14AtomicSequence_11__dealloc__(PyObject *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
+  __pyx_pf_6atomic_14AtomicSequence_10__dealloc__(((struct __pyx_obj_6atomic_AtomicSequence *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+static void __pyx_pf_6atomic_14AtomicSequence_10__dealloc__(struct __pyx_obj_6atomic_AtomicSequence *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__", 0);
+
+  /* "sequence/sequence.pyx":28
+ * 
+ *     def __dealloc__(self):
+ *         del self.value             # <<<<<<<<<<<<<<
+ */
+  delete __pyx_v_self->value;
+
+  /* "sequence/sequence.pyx":27
+ *         return self.value.get_and_increment(value)
+ * 
+ *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         del self.value
+ */
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
 }
 
 /* "(tree fragment)":1
@@ -1663,19 +1643,20 @@ static PyObject *__pyx_pf_8sequence_14AtomicSequence_8get_and_increment(struct _
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8sequence_14AtomicSequence_11__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_8sequence_14AtomicSequence_11__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6atomic_14AtomicSequence_13__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6atomic_14AtomicSequence_12__reduce_cython__[] = "AtomicSequence.__reduce_cython__(self)";
+static PyObject *__pyx_pw_6atomic_14AtomicSequence_13__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_8sequence_14AtomicSequence_10__reduce_cython__(((struct __pyx_obj_8sequence_AtomicSequence *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6atomic_14AtomicSequence_12__reduce_cython__(((struct __pyx_obj_6atomic_AtomicSequence *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8sequence_14AtomicSequence_10__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_8sequence_AtomicSequence *__pyx_v_self) {
+static PyObject *__pyx_pf_6atomic_14AtomicSequence_12__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6atomic_AtomicSequence *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1705,7 +1686,7 @@ static PyObject *__pyx_pf_8sequence_14AtomicSequence_10__reduce_cython__(CYTHON_
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("sequence.AtomicSequence.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("atomic.AtomicSequence.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -1720,19 +1701,20 @@ static PyObject *__pyx_pf_8sequence_14AtomicSequence_10__reduce_cython__(CYTHON_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8sequence_14AtomicSequence_13__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_8sequence_14AtomicSequence_13__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_6atomic_14AtomicSequence_15__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static char __pyx_doc_6atomic_14AtomicSequence_14__setstate_cython__[] = "AtomicSequence.__setstate_cython__(self, __pyx_state)";
+static PyObject *__pyx_pw_6atomic_14AtomicSequence_15__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_8sequence_14AtomicSequence_12__setstate_cython__(((struct __pyx_obj_8sequence_AtomicSequence *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_6atomic_14AtomicSequence_14__setstate_cython__(((struct __pyx_obj_6atomic_AtomicSequence *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8sequence_14AtomicSequence_12__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_8sequence_AtomicSequence *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_6atomic_14AtomicSequence_14__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6atomic_AtomicSequence *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1762,14 +1744,14 @@ static PyObject *__pyx_pf_8sequence_14AtomicSequence_12__setstate_cython__(CYTHO
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("sequence.AtomicSequence.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("atomic.AtomicSequence.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_tp_new_8sequence_AtomicSequence(PyTypeObject *t, PyObject *a, PyObject *k) {
+static PyObject *__pyx_tp_new_6atomic_AtomicSequence(PyTypeObject *t, PyObject *a, PyObject *k) {
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
     o = (*t->tp_alloc)(t, 0);
@@ -1777,38 +1759,46 @@ static PyObject *__pyx_tp_new_8sequence_AtomicSequence(PyTypeObject *t, PyObject
     o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
   }
   if (unlikely(!o)) return 0;
-  if (unlikely(__pyx_pw_8sequence_14AtomicSequence_1__cinit__(o, a, k) < 0)) goto bad;
+  if (unlikely(__pyx_pw_6atomic_14AtomicSequence_1__cinit__(o, a, k) < 0)) goto bad;
   return o;
   bad:
   Py_DECREF(o); o = 0;
   return NULL;
 }
 
-static void __pyx_tp_dealloc_8sequence_AtomicSequence(PyObject *o) {
+static void __pyx_tp_dealloc_6atomic_AtomicSequence(PyObject *o) {
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
   }
   #endif
+  {
+    PyObject *etype, *eval, *etb;
+    PyErr_Fetch(&etype, &eval, &etb);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) + 1);
+    __pyx_pw_6atomic_14AtomicSequence_11__dealloc__(o);
+    __Pyx_SET_REFCNT(o, Py_REFCNT(o) - 1);
+    PyErr_Restore(etype, eval, etb);
+  }
   (*Py_TYPE(o)->tp_free)(o);
 }
 
-static PyMethodDef __pyx_methods_8sequence_AtomicSequence[] = {
-  {"get", (PyCFunction)__pyx_pw_8sequence_14AtomicSequence_3get, METH_NOARGS, 0},
-  {"set", (PyCFunction)__pyx_pw_8sequence_14AtomicSequence_5set, METH_O, 0},
-  {"increment_and_get", (PyCFunction)__pyx_pw_8sequence_14AtomicSequence_7increment_and_get, METH_O, __pyx_doc_8sequence_14AtomicSequence_6increment_and_get},
-  {"get_and_increment", (PyCFunction)__pyx_pw_8sequence_14AtomicSequence_9get_and_increment, METH_O, __pyx_doc_8sequence_14AtomicSequence_8get_and_increment},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_8sequence_14AtomicSequence_11__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_8sequence_14AtomicSequence_13__setstate_cython__, METH_O, 0},
+static PyMethodDef __pyx_methods_6atomic_AtomicSequence[] = {
+  {"get", (PyCFunction)__pyx_pw_6atomic_14AtomicSequence_3get, METH_NOARGS, __pyx_doc_6atomic_14AtomicSequence_2get},
+  {"set", (PyCFunction)__pyx_pw_6atomic_14AtomicSequence_5set, METH_O, __pyx_doc_6atomic_14AtomicSequence_4set},
+  {"increment_and_get", (PyCFunction)__pyx_pw_6atomic_14AtomicSequence_7increment_and_get, METH_O, __pyx_doc_6atomic_14AtomicSequence_6increment_and_get},
+  {"get_and_increment", (PyCFunction)__pyx_pw_6atomic_14AtomicSequence_9get_and_increment, METH_O, __pyx_doc_6atomic_14AtomicSequence_8get_and_increment},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6atomic_14AtomicSequence_13__reduce_cython__, METH_NOARGS, __pyx_doc_6atomic_14AtomicSequence_12__reduce_cython__},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6atomic_14AtomicSequence_15__setstate_cython__, METH_O, __pyx_doc_6atomic_14AtomicSequence_14__setstate_cython__},
   {0, 0, 0, 0}
 };
 
-static PyTypeObject __pyx_type_8sequence_AtomicSequence = {
+static PyTypeObject __pyx_type_6atomic_AtomicSequence = {
   PyVarObject_HEAD_INIT(0, 0)
-  "sequence.AtomicSequence", /*tp_name*/
-  sizeof(struct __pyx_obj_8sequence_AtomicSequence), /*tp_basicsize*/
+  "atomic.AtomicSequence", /*tp_name*/
+  sizeof(struct __pyx_obj_6atomic_AtomicSequence), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_8sequence_AtomicSequence, /*tp_dealloc*/
+  __pyx_tp_dealloc_6atomic_AtomicSequence, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -1841,7 +1831,7 @@ static PyTypeObject __pyx_type_8sequence_AtomicSequence = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_8sequence_AtomicSequence, /*tp_methods*/
+  __pyx_methods_6atomic_AtomicSequence, /*tp_methods*/
   0, /*tp_members*/
   0, /*tp_getset*/
   0, /*tp_base*/
@@ -1851,7 +1841,7 @@ static PyTypeObject __pyx_type_8sequence_AtomicSequence = {
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_8sequence_AtomicSequence, /*tp_new*/
+  __pyx_tp_new_6atomic_AtomicSequence, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -1879,17 +1869,17 @@ static PyMethodDef __pyx_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_sequence(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_atomic(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_sequence},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_atomic},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "sequence",
+    "atomic",
     0, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -1932,7 +1922,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_value, __pyx_k_value, sizeof(__pyx_k_value), 0, 0, 1, 1},
-  {&__pyx_n_s_value_get_and_increment, __pyx_k_value_get_and_increment, sizeof(__pyx_k_value_get_and_increment), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
@@ -2017,16 +2006,16 @@ static int __Pyx_modinit_type_init_code(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_8sequence_AtomicSequence) < 0) __PYX_ERR(1, 4, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6atomic_AtomicSequence) < 0) __PYX_ERR(1, 4, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
-  __pyx_type_8sequence_AtomicSequence.tp_print = 0;
+  __pyx_type_6atomic_AtomicSequence.tp_print = 0;
   #endif
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_8sequence_AtomicSequence.tp_dictoffset && __pyx_type_8sequence_AtomicSequence.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_8sequence_AtomicSequence.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6atomic_AtomicSequence.tp_dictoffset && __pyx_type_6atomic_AtomicSequence.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_6atomic_AtomicSequence.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_AtomicSequence, (PyObject *)&__pyx_type_8sequence_AtomicSequence) < 0) __PYX_ERR(1, 4, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_8sequence_AtomicSequence) < 0) __PYX_ERR(1, 4, __pyx_L1_error)
-  __pyx_ptype_8sequence_AtomicSequence = &__pyx_type_8sequence_AtomicSequence;
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_AtomicSequence, (PyObject *)&__pyx_type_6atomic_AtomicSequence) < 0) __PYX_ERR(1, 4, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6atomic_AtomicSequence) < 0) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_ptype_6atomic_AtomicSequence = &__pyx_type_6atomic_AtomicSequence;
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -2077,11 +2066,11 @@ static int __Pyx_modinit_function_import_code(void) {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initsequence(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initsequence(void)
+__Pyx_PyMODINIT_FUNC initatomic(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initatomic(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_sequence(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_sequence(void)
+__Pyx_PyMODINIT_FUNC PyInit_atomic(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_atomic(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -2148,7 +2137,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_sequence(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_atomic(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -2160,7 +2149,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_sequence(PyObject *__pyx_pyinit_mo
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'sequence' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'atomic' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -2175,7 +2164,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_sequence(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_atomic(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -2214,7 +2203,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("sequence", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("atomic", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -2232,14 +2221,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_sequence) {
+  if (__pyx_module_is_main_atomic) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(1, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "sequence")) {
-      if (unlikely(PyDict_SetItemString(modules, "sequence", __pyx_m) < 0)) __PYX_ERR(1, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "atomic")) {
+      if (unlikely(PyDict_SetItemString(modules, "atomic", __pyx_m) < 0)) __PYX_ERR(1, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -2260,8 +2249,8 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #endif
 
-  /* "sequence.pyx":1
- * from sequence.Sequence cimport Sequence             # <<<<<<<<<<<<<<
+  /* "sequence/sequence.pyx":1
+ * from sequence.sequence cimport Sequence             # <<<<<<<<<<<<<<
  * 
  * 
  */
@@ -2277,11 +2266,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init sequence", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init atomic", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init sequence");
+    PyErr_SetString(PyExc_ImportError, "init atomic");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -2482,148 +2471,6 @@ static void __Pyx_RaiseArgtupleInvalid(
                  (num_expected == 1) ? "" : "s", num_found);
 }
 
-/* PyCFunctionFastCall */
-#if CYTHON_FAST_PYCCALL
-static CYTHON_INLINE PyObject * __Pyx_PyCFunction_FastCall(PyObject *func_obj, PyObject **args, Py_ssize_t nargs) {
-    PyCFunctionObject *func = (PyCFunctionObject*)func_obj;
-    PyCFunction meth = PyCFunction_GET_FUNCTION(func);
-    PyObject *self = PyCFunction_GET_SELF(func);
-    int flags = PyCFunction_GET_FLAGS(func);
-    assert(PyCFunction_Check(func));
-    assert(METH_FASTCALL == (flags & ~(METH_CLASS | METH_STATIC | METH_COEXIST | METH_KEYWORDS | METH_STACKLESS)));
-    assert(nargs >= 0);
-    assert(nargs == 0 || args != NULL);
-    /* _PyCFunction_FastCallDict() must not be called with an exception set,
-       because it may clear it (directly or indirectly) and so the
-       caller loses its exception */
-    assert(!PyErr_Occurred());
-    if ((PY_VERSION_HEX < 0x030700A0) || unlikely(flags & METH_KEYWORDS)) {
-        return (*((__Pyx_PyCFunctionFastWithKeywords)(void*)meth)) (self, args, nargs, NULL);
-    } else {
-        return (*((__Pyx_PyCFunctionFast)(void*)meth)) (self, args, nargs);
-    }
-}
-#endif
-
-/* PyFunctionFastCall */
-#if CYTHON_FAST_PYCALL
-static PyObject* __Pyx_PyFunction_FastCallNoKw(PyCodeObject *co, PyObject **args, Py_ssize_t na,
-                                               PyObject *globals) {
-    PyFrameObject *f;
-    PyThreadState *tstate = __Pyx_PyThreadState_Current;
-    PyObject **fastlocals;
-    Py_ssize_t i;
-    PyObject *result;
-    assert(globals != NULL);
-    /* XXX Perhaps we should create a specialized
-       PyFrame_New() that doesn't take locals, but does
-       take builtins without sanity checking them.
-       */
-    assert(tstate != NULL);
-    f = PyFrame_New(tstate, co, globals, NULL);
-    if (f == NULL) {
-        return NULL;
-    }
-    fastlocals = __Pyx_PyFrame_GetLocalsplus(f);
-    for (i = 0; i < na; i++) {
-        Py_INCREF(*args);
-        fastlocals[i] = *args++;
-    }
-    result = PyEval_EvalFrameEx(f,0);
-    ++tstate->recursion_depth;
-    Py_DECREF(f);
-    --tstate->recursion_depth;
-    return result;
-}
-#if 1 || PY_VERSION_HEX < 0x030600B1
-static PyObject *__Pyx_PyFunction_FastCallDict(PyObject *func, PyObject **args, Py_ssize_t nargs, PyObject *kwargs) {
-    PyCodeObject *co = (PyCodeObject *)PyFunction_GET_CODE(func);
-    PyObject *globals = PyFunction_GET_GLOBALS(func);
-    PyObject *argdefs = PyFunction_GET_DEFAULTS(func);
-    PyObject *closure;
-#if PY_MAJOR_VERSION >= 3
-    PyObject *kwdefs;
-#endif
-    PyObject *kwtuple, **k;
-    PyObject **d;
-    Py_ssize_t nd;
-    Py_ssize_t nk;
-    PyObject *result;
-    assert(kwargs == NULL || PyDict_Check(kwargs));
-    nk = kwargs ? PyDict_Size(kwargs) : 0;
-    if (Py_EnterRecursiveCall((char*)" while calling a Python object")) {
-        return NULL;
-    }
-    if (
-#if PY_MAJOR_VERSION >= 3
-            co->co_kwonlyargcount == 0 &&
-#endif
-            likely(kwargs == NULL || nk == 0) &&
-            co->co_flags == (CO_OPTIMIZED | CO_NEWLOCALS | CO_NOFREE)) {
-        if (argdefs == NULL && co->co_argcount == nargs) {
-            result = __Pyx_PyFunction_FastCallNoKw(co, args, nargs, globals);
-            goto done;
-        }
-        else if (nargs == 0 && argdefs != NULL
-                 && co->co_argcount == Py_SIZE(argdefs)) {
-            /* function called with no arguments, but all parameters have
-               a default value: use default values as arguments .*/
-            args = &PyTuple_GET_ITEM(argdefs, 0);
-            result =__Pyx_PyFunction_FastCallNoKw(co, args, Py_SIZE(argdefs), globals);
-            goto done;
-        }
-    }
-    if (kwargs != NULL) {
-        Py_ssize_t pos, i;
-        kwtuple = PyTuple_New(2 * nk);
-        if (kwtuple == NULL) {
-            result = NULL;
-            goto done;
-        }
-        k = &PyTuple_GET_ITEM(kwtuple, 0);
-        pos = i = 0;
-        while (PyDict_Next(kwargs, &pos, &k[i], &k[i+1])) {
-            Py_INCREF(k[i]);
-            Py_INCREF(k[i+1]);
-            i += 2;
-        }
-        nk = i / 2;
-    }
-    else {
-        kwtuple = NULL;
-        k = NULL;
-    }
-    closure = PyFunction_GET_CLOSURE(func);
-#if PY_MAJOR_VERSION >= 3
-    kwdefs = PyFunction_GET_KW_DEFAULTS(func);
-#endif
-    if (argdefs != NULL) {
-        d = &PyTuple_GET_ITEM(argdefs, 0);
-        nd = Py_SIZE(argdefs);
-    }
-    else {
-        d = NULL;
-        nd = 0;
-    }
-#if PY_MAJOR_VERSION >= 3
-    result = PyEval_EvalCodeEx((PyObject*)co, globals, (PyObject *)NULL,
-                               args, (int)nargs,
-                               k, (int)nk,
-                               d, (int)nd, kwdefs, closure);
-#else
-    result = PyEval_EvalCodeEx(co, globals, (PyObject *)NULL,
-                               args, (int)nargs,
-                               k, (int)nk,
-                               d, (int)nd, closure);
-#endif
-    Py_XDECREF(kwtuple);
-done:
-    Py_LeaveRecursiveCall();
-    return result;
-}
-#endif
-#endif
-
 /* PyObjectCall */
 #if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw) {
@@ -2640,95 +2487,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg
             PyExc_SystemError,
             "NULL result without error in PyObject_Call");
     }
-    return result;
-}
-#endif
-
-/* PyObjectCall2Args */
-static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2) {
-    PyObject *args, *result = NULL;
-    #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(function)) {
-        PyObject *args[2] = {arg1, arg2};
-        return __Pyx_PyFunction_FastCall(function, args, 2);
-    }
-    #endif
-    #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(function)) {
-        PyObject *args[2] = {arg1, arg2};
-        return __Pyx_PyCFunction_FastCall(function, args, 2);
-    }
-    #endif
-    args = PyTuple_New(2);
-    if (unlikely(!args)) goto done;
-    Py_INCREF(arg1);
-    PyTuple_SET_ITEM(args, 0, arg1);
-    Py_INCREF(arg2);
-    PyTuple_SET_ITEM(args, 1, arg2);
-    Py_INCREF(function);
-    result = __Pyx_PyObject_Call(function, args, NULL);
-    Py_DECREF(args);
-    Py_DECREF(function);
-done:
-    return result;
-}
-
-/* PyObjectCallMethO */
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg) {
-    PyObject *self, *result;
-    PyCFunction cfunc;
-    cfunc = PyCFunction_GET_FUNCTION(func);
-    self = PyCFunction_GET_SELF(func);
-    if (unlikely(Py_EnterRecursiveCall((char*)" while calling a Python object")))
-        return NULL;
-    result = cfunc(self, arg);
-    Py_LeaveRecursiveCall();
-    if (unlikely(!result) && unlikely(!PyErr_Occurred())) {
-        PyErr_SetString(
-            PyExc_SystemError,
-            "NULL result without error in PyObject_Call");
-    }
-    return result;
-}
-#endif
-
-/* PyObjectCallOneArg */
-#if CYTHON_COMPILING_IN_CPYTHON
-static PyObject* __Pyx__PyObject_CallOneArg(PyObject *func, PyObject *arg) {
-    PyObject *result;
-    PyObject *args = PyTuple_New(1);
-    if (unlikely(!args)) return NULL;
-    Py_INCREF(arg);
-    PyTuple_SET_ITEM(args, 0, arg);
-    result = __Pyx_PyObject_Call(func, args, NULL);
-    Py_DECREF(args);
-    return result;
-}
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg) {
-#if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(func)) {
-        return __Pyx_PyFunction_FastCall(func, &arg, 1);
-    }
-#endif
-    if (likely(PyCFunction_Check(func))) {
-        if (likely(PyCFunction_GET_FLAGS(func) & METH_O)) {
-            return __Pyx_PyObject_CallMethO(func, arg);
-#if CYTHON_FAST_PYCCALL
-        } else if (PyCFunction_GET_FLAGS(func) & METH_FASTCALL) {
-            return __Pyx_PyCFunction_FastCall(func, &arg, 1);
-#endif
-        }
-    }
-    return __Pyx__PyObject_CallOneArg(func, arg);
-}
-#else
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg) {
-    PyObject *result;
-    PyObject *args = PyTuple_Pack(1, arg);
-    if (unlikely(!args)) return NULL;
-    result = __Pyx_PyObject_Call(func, args, NULL);
-    Py_DECREF(args);
     return result;
 }
 #endif

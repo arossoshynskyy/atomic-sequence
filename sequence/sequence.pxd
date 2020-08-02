@@ -1,4 +1,8 @@
-cdef extern from "Sequence.h" nogil:
+cdef extern from "src/Sequence.cpp":
+    pass
+
+cdef extern from "src/Sequence.h" nogil:
+
     cdef cppclass Sequence:
         Sequence(long value) except +
         long get()

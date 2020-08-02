@@ -1,4 +1,4 @@
-from sequence.Sequence cimport Sequence
+from sequence.sequence cimport Sequence
 
 
 cdef class AtomicSequence:
@@ -22,7 +22,7 @@ cdef class AtomicSequence:
     def get_and_increment(self, long value):
         """ Increment the current value of the sequence by a given amount
         and return the value directly preceding the operation """
-        return self.value_get_and_increment(value)
+        return self.value.get_and_increment(value)
 
     def __dealloc__(self):
         del self.value
