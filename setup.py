@@ -35,12 +35,9 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     name="atomic-sequence",
-    # include_package_data=True,
-    install_requires=["Cython"],
     packages=find_packages(),
     package_data={"": ["src/*", "*.pxd", "*.pyx", "*.cpp", ".h"],},
     python_requires=">=3.6",
-    setup_requires=["Cython"],
     url="https://github.com/arossoshynskyy/atomic-sequence",
-    version="0.0.6",
+    version="0.0.7",
 )
