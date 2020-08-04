@@ -4,14 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-Cython = "*"
-assertpy = "*"
 
 [dev-packages]
 black = "==19.10b0"
 tox = "*"
 pytest = "*"
 pytest-benchmark = "*"
+assertpy = "*"
+cython = "*"
 
 [requires]
 python_version = "3.8"

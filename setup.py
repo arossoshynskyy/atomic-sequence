@@ -1,14 +1,27 @@
 from setuptools import Extension, setup, find_packages
-from Cython.Build import cythonize
+from distutils.command.sdist import sdist as _sdist
+
+
+# Can't import cython until setup is read, can't read setup until
+# Cython is installed.
+try:
+    from Cython.Build import cythonize
+    use_cython = True
+except ImportError:
+    use_cython = False
+
+if use_cython:
+    ext_modules = cythonize(
+        Extension("atomic", sources=["sequence/sequence.pyx"], language="c++",),
+        compiler_directives={"embedsignature": True},
+    )
+else:
+    ext_modules = [Extension("atomic", sources=["sequence/sequence.cpp"], language="c++")]
 
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-ext_modules = cythonize(
-    Extension("atomic", sources=["sequence/sequence.pyx"], language="c++",),
-    compiler_directives={"embedsignature": True},
-)
 
 setup(
     author="Andriy Rossoshynskyy",
@@ -29,5 +42,5 @@ setup(
     python_requires=">=3.6",
     setup_requires=["Cython"],
     url="https://github.com/arossoshynskyy/atomic-sequence",
-    version="0.0.5",
+    version="0.0.6",
 )
