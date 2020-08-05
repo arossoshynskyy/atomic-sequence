@@ -12,11 +12,11 @@ except ImportError:
 
 if use_cython:
     ext_modules = cythonize(
-        Extension("atomic", sources=["sequence/sequence.pyx"], language="c++",),
+        Extension("atomicsequence", sources=["sequence/sequence.pyx"], language="c++",),
         compiler_directives={"embedsignature": True},
     )
 else:
-    ext_modules = [Extension("atomic", sources=["sequence/sequence.cpp"], language="c++")]
+    ext_modules = [Extension("atomicsequence", sources=["sequence/sequence.cpp"], language="c++")]
 
 
 with open("README.md", "r") as fh:
@@ -39,5 +39,5 @@ setup(
     package_data={"": ["src/*", "*.pxd", "*.pyx", "*.cpp", ".h"],},
     python_requires=">=3.6",
     url="https://github.com/arossoshynskyy/atomic-sequence",
-    version="0.0.7",
+    version="0.0.8",
 )

@@ -10,9 +10,9 @@ pip install atomic-sequence
 ## Usage
 
 ```python
-from atomic import Sequence
+from atomicsequence import Sequence
 
-sequence = Sequence(0)
+sequence = AtomicSequence(0)
 
 # set current sequence value to 1
 sequence.set(1)

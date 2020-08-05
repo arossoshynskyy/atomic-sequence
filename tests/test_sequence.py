@@ -1,10 +1,10 @@
 from assertpy import assert_that
 
-from atomic import Sequence
+from atomicsequence import AtomicSequence
 
 
 def test_get_set():
-    sequence = Sequence(0)
+    sequence = AtomicSequence(0)
 
     sequence.set(10)
 
@@ -12,7 +12,7 @@ def test_get_set():
 
 
 def test_increment_and_get():
-    sequence = Sequence(0)
+    sequence = AtomicSequence(0)
 
     new_value = sequence.increment_and_get(10)
 
@@ -20,7 +20,7 @@ def test_increment_and_get():
 
 
 def test_get_and_increment():
-    sequence = Sequence(0)
+    sequence = AtomicSequence(0)
 
     old_value = sequence.get_and_increment(10)
     new_value = sequence.get()
