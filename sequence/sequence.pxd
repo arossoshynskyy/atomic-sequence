@@ -1,7 +1,7 @@
 cdef extern from "src/Sequence.cpp":
     pass
 
-cdef extern from "src/Sequence.h" nogil:
+cdef extern from "src/Sequence.h":
 
     cdef cppclass Sequence:
         Sequence(long value) except +

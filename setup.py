@@ -1,5 +1,4 @@
 from setuptools import Extension, setup, find_packages
-from distutils.command.sdist import sdist as _sdist
 
 
 # Can't import cython until setup is read, can't read setup until
@@ -13,7 +12,7 @@ except ImportError:
 if use_cython:
     ext_modules = cythonize(
         Extension("atomicsequence", sources=["sequence/sequence.pyx"], language="c++",),
-        compiler_directives={"embedsignature": True},
+        compiler_directives={"embedsignature": True, "language_level": "3"},
     )
 else:
     ext_modules = [Extension("atomicsequence", sources=["sequence/sequence.cpp"], language="c++")]
@@ -39,5 +38,5 @@ setup(
     package_data={"": ["src/*", "*.pxd", "*.pyx", "*.cpp", ".h"],},
     python_requires=">=3.6",
     url="https://github.com/arossoshynskyy/atomic-sequence",
-    version="0.0.8",
+    version="0.0.9",
 )
