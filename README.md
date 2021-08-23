@@ -10,7 +10,7 @@ pip install atomic-sequence
 ## Usage
 
 ```python
-from atomicsequence import Sequence
+from atomicsequence import AtomicSequence
 
 sequence = AtomicSequence(0)
 
