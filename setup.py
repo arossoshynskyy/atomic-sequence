@@ -38,5 +38,5 @@ setup(
     package_data={"": ["src/*", "*.pxd", "*.pyx", "*.cpp", ".h"],},
     python_requires=">=3.7",
     url="https://github.com/arossoshynskyy/atomic-sequence",
-    version="0.1.0",
+    version="0.0.9",
 )
