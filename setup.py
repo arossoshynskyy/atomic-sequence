@@ -1,21 +1,8 @@
 from setuptools import Extension, setup, find_packages
 
-
-# Can't import cython until setup is read, can't read setup until
-# Cython is installed.
-try:
-    from Cython.Build import cythonize
-    use_cython = True
-except ImportError:
-    use_cython = False
-
-if use_cython:
-    ext_modules = cythonize(
-        Extension("atomicsequence", sources=["sequence/sequence.pyx"], language="c++",),
-        compiler_directives={"embedsignature": True, "language_level": "3"},
-    )
-else:
-    ext_modules = [Extension("atomicsequence", sources=["sequence/sequence.cpp"], language="c++")]
+ext_modules = [
+    Extension("atomicsequence", sources=["sequence/sequence.pyx"], language="c++"),
+]
 
 
 with open("README.md", "r") as fh:
@@ -31,12 +18,13 @@ setup(
     ],
     description="A lock-free, thread-safe sequence counter using the C++ atomic library.",
     ext_modules=ext_modules,
+    setup_requires=["setuptools>=18.0", "Cython>3.0"],
     long_description=long_description,
     long_description_content_type="text/markdown",
     name="atomic-sequence",
     packages=find_packages(),
-    package_data={"": ["src/*", "*.pxd", "*.pyx", "*.cpp", ".h"],},
-    python_requires=">=3.6",
+    package_data={"": ["src/*", "*.pxd", "*.pyx", "*.cpp", ".h"]},
+    python_requires=">=3.7",
     url="https://github.com/arossoshynskyy/atomic-sequence",
     version="0.0.9",
 )
